@@ -47,6 +47,19 @@ async function fetchAndRender() {
     } else {
       showLoadMoreButton();
     }
+
+    if (page > 1) {
+      const card = gallery.firstElementChild;
+
+      if (card) {
+        const cardHeight = card.getBoundingClientRect().height;
+
+        window.scrollBy({
+          top: cardHeight * 2,
+          behavior: 'smooth',
+        });
+      }
+    }
   } catch (error) {
     // console.log('Error:', error);
     if (page > 1) {
